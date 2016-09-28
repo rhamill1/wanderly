@@ -3,22 +3,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>map</title>
+	<title>Wanderly</title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles/styles.css">
 
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-
-  <!-- APPLICATION SCRIPTS -->
-  <script src="scripts/app.js"></script>
-
-
 </head>
   <body>
-    <div id="map"></div>
+    <h1 class="app-title"> Wanderly </h1>
+    <div class="containter">
+      <div class="col-md-offset-1 col-md-10" id="map"></div>
+      <div class="controllers"></div>
+    </div>
+    <div id="main"  class="container">
+
+    <script id="experience-handle-bar"  type="text/x-handlebars-template">
+      {{#each Experience}}
+        <div class="box row" >
+          <div class="col-md-5">
+            <img src="{{image}}" class="imagetag" alt="personal images">
+          </div>
+          <div class="col-md-offset-1 col-md-5">
+            <h3> {{title}}<h3>
+            <p class="datetag"> {{date}}</p>
+            <p class="notetag"> {{note}}</p>
+            <p class="authortag"> {{author}}</p>
+            <button class="fa fa-pencil-square-o" aria-hidden="true"></button>
+            <button class="fa fa-times" ></button>
+          </div>
+        </div>
+      {{/each}}
+    </script>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="https://use.fontawesome.com/7b050a501f.js"></script>
+
   </body>
 </html>
 
