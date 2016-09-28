@@ -1,52 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>map</title>
-	     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- VENDOR SCRIPTS -->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+  <!-- APPLICATION SCRIPTS -->
+  <script src="scripts/app.js"></script>
+
 </head>
-<body>
-<style>
-#map {width:700px; height:700px;}
-</style>
-<div id="map"></div>
-<script>
-// In the following example, markers appear when the user clicks on the map.
-// Each marker is labeled with a single alphabetical character.
-var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var labelIndex = 0;
-
-function initialize() {
-  var bangalore = { lat: 37.7749, lng: -122.431297 };
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 3,
-    center: bangalore
-  });
-
-  // This event listener calls addMarker() when the map is clicked.
-  google.maps.event.addListener(map, 'click', function(event) {
-  	console.log(event.latLng)
-    addMarker(event.latLng, map);
-  });
-
-  // Add a marker at the center of the map.
-  addMarker(bangalore, map);
-}
-
-// Adds a marker to the map.
-function addMarker(location, map) {
-  // Add the marker at the clicked location, and add the next-available label
-  // from the array of alphabetical characters.
-  console.log(location)
-  var marker = new google.maps.Marker({
-    position: location,
-    label: labels[labelIndex++ % labels.length],
-    map: map
-  });
-  document.getElementById('place').textContent += "<br/>Lat/long" + location ;
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
- <div id="place"> </div>
-</body>
+  <body>
+    <div id="map"></div>
+  </body>
 </html>
