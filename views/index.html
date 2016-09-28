@@ -16,9 +16,9 @@ var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
 
 function initialize() {
-  var bangalore = { lat: 12.97, lng: 77.59 };
+  var bangalore = { lat: 37.7749, lng: -122.431297 };
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
+    zoom: 3,
     center: bangalore
   });
 
@@ -42,10 +42,11 @@ function addMarker(location, map) {
     label: labels[labelIndex++ % labels.length],
     map: map
   });
+  document.getElementById('place').textContent += "<br/>Lat/long" + location ;
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
   </script>
- 
+ <div id="place"> </div>
 </body>
 </html>
