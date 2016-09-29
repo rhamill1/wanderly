@@ -1,10 +1,11 @@
 $(document).ready(function(){
   console.log('js is ready!');
-  google.maps.event.addDomListener(window, 'load', initialize);
-
+  // google.maps.event.addDomListener(window, 'load', initialize);
+  initialize();
   //preparing handlebar
   var source = $('#experience-handle-bar').html();
   var template = Handlebars.compile(source);
+  var LatLng={lat:0,lng:0};
 
   $.ajax({
     type: 'GET',
@@ -14,45 +15,45 @@ $(document).ready(function(){
       console.log(data);
       var content = template({Experience : data});
       $('#main').append(content);
+      for(var key in data){
+            LatLng.lat = data[key].coordinates.lat;
+            LatLng.lng = data[key].coordinates.lng;
+            addMarker(LatLng, map)
+
+         }
     }
   });
 });//ending ready
 
-
+var map ;
 function initialize(){
-  var bangalore = { lat: 37.7749, lng: -122.431297 };
-  var map = new google.maps.Map(document.getElementById('map'), {
+  var sf = { lat: 36.01553, lng: -6.567 };
+  map = new google.maps.Map(document.getElementById('map'), {
     zoom: 3,
-    center: bangalore
+    center: sf
   });
   // This event listener calls addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
     //console.log(event.latLng)
     addMarker(event.latLng, map);
+    console.log(event.latLng.lat(),event.latLng.lng())
   });
-  // Add a marker at the center of the map.
-  addMarker(bangalore, map);
+
 }
 
 
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
- var image = {
-    url: 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/star-128.png',
-    // This marker is 20 pixels wide by 32 pixels high.
-    size: new google.maps.Size(20, 32),
-    // The origin for this image is (0, 0).
-    origin: new google.maps.Point(0, 0),
-    // The anchor for this image is the base of the flagpole at (0, 32).
-    anchor: new google.maps.Point(0, 32)
-  };
-
 
 function addMarker(location, map) {
+  console.log("in lo: ",location.lat)
+
   var marker = new google.maps.Marker({
     position: location,
     label: labels[labelIndex++ % labels.length],
     animation: google.maps.Animation.DROP,
     map: map
   });
+  console.log(marker)
+  marker.setMap(map);
 }
