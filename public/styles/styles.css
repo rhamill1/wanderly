@@ -20,7 +20,9 @@ body {
    margin-top:20px;
 }
 
-
+#new-entry {
+  display: none;
+}
 
 /*   classes */
 .app-title {
@@ -44,5 +46,8 @@ body {
    background:transparent;
    border:none;
    float:right;
+}
 
+.controllers {
+  clear: both;
 }
