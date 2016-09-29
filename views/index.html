@@ -19,30 +19,30 @@
       <div class="controllers"></div>
     </div>
     <div id="main"  class="container">
-    <script id="experience-handle-bar"  type="text/x-handlebars-template">
-      {{#each Experience}}
-        <div class="box row" >
-          <div class="col-md-5">
-            <img src="{{image}}" class="imagetag" alt="personal images">
+      <script id="experience-handle-bar"  type="text/x-handlebars-template">
+        {{#each Experience}}
+          <div class="box row" >
+            <div class="col-md-5">
+              <img src="{{image}}" class="imagetag" alt="personal images">
+            </div>
+            <div class="col-md-offset-1 col-md-5">
+              <h2> {{title}}</h2>
+              <p class="datetag"><strong>Date: </strong> {{date}}</p>
+              <p class="authortag"><strong>By: </strong> {{author}}</p>
+              <p class="notetag"> {{note}}</p>
+              <button class="fa fa-pencil-square-o" aria-hidden="true"></button>
+              <button class="fa fa-times" ></button>
+            </div>
           </div>
-          <div class="col-md-offset-1 col-md-5">
-            <h2> {{title}}</h2>
-            <p class="datetag"><strong>Date: </strong> {{date}}</p>
-            <p class="authortag"><strong>By: </strong> {{author}}</p>
-            <p class="notetag"> {{note}}</p>
-            <button class="fa fa-pencil-square-o" aria-hidden="true"></button>
-            <button class="fa fa-times" ></button>
-          </div>
-        </div>
-      {{/each}}
-    </script>
-
-<!-- <footer id="footer">
+        {{/each}}
+      </script>
+    </div>
+<footer id="footer">
  <ul id="footer-links">
  <li> <a href="#"> About </a></li>
  <li> <a class="fa fa-github" href="#"> </a></li>
  </ul>
-</footer> -->
+</footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
