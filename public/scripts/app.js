@@ -25,8 +25,15 @@ $(document).ready(function(){
   });
 
   $('#new-entry-btn').on('click', function() {
-      $('#new-entry').slideToggle('slow');
-    });
+    $('#new-entry').slideToggle('slow');
+  });
+
+
+  $('#experience-form').on('submit', function(e) {
+    e.preventDefault();
+    // console.log($('#experience-form'));
+    console.log($('#experience-form').serialize());
+  });
 
 });//ending ready
 
