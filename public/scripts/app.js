@@ -23,6 +23,11 @@ $(document).ready(function(){
          }
     }
   });
+
+  $('#new-entry-btn').on('click', function() {
+      $('#new-entry').slideToggle('slow');
+    });
+
 });//ending ready
 
 var map ;
