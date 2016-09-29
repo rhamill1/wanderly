@@ -1,10 +1,13 @@
+var template;
+var content;
+
 $(document).ready(function(){
   console.log('js is ready!');
   // google.maps.event.addDomListener(window, 'load', initialize);
   initialize();
   //preparing handlebar
   var source = $('#experience-handle-bar').html();
-  var template = Handlebars.compile(source);
+  template = Handlebars.compile(source);
   var LatLng={lat:0,lng:0};
 
   $.ajax({
@@ -15,17 +18,25 @@ $(document).ready(function(){
       console.log(data);
       var content = template({Experience : data});
       $('#main').append(content);
-      for(var key in data){
-            LatLng.lat = data[key].coordinates.lat;
-            LatLng.lng = data[key].coordinates.lng;
-            addMarker(LatLng, map)
-      }
+      // for(var key in data){
+      //       LatLng.lat = data[key].coordinates.lat;
+      //       LatLng.lng = data[key].coordinates.lng;
+      //       addMarker(LatLng, map)
+      // }
     }
   });
 
+ var newLocation={lat:0,lng:0};
 
   $('#new-entry-btn').on('click', function() {
     $('#new-entry').slideToggle('slow');
+      google.maps.event.addListener(map, 'click', function(event) {
+        addMarker(event.latLng, map);
+
+        newLocation.lat = event.latLng.lat();
+        newLocation.lng = event.latLng.lng();
+        console.log(newLocation)
+    });
   });
 
 
@@ -33,6 +44,7 @@ $(document).ready(function(){
 
   $('#experience-form').on('submit', function(e) {
     e.preventDefault();
+    // getFromData();
     var newExperience = $('#experience-form').serialize();
     $.ajax({
       method: "POST",
@@ -41,19 +53,29 @@ $(document).ready(function(){
       success: function onCreateSuccess(json) {
         allExperiences.push(json);
         console.log(allExperiences);
-        // render();
+        render(json);
+        //$('#new-entry').slideToggle('slow');
+        $('#experience-form')[0].reset();
       }
     });
-
-
-
-
-
 
 
   });
 
 });//ending ready
+
+
+function render(data){
+  $('#Experience').empty();
+  content = template({Experience : data});
+  console.log(content)
+  $('#Experience').append(content);
+
+}
+
+function getFormData(){
+
+}
 
 var map ;
 function initialize(){
@@ -62,12 +84,7 @@ function initialize(){
     zoom: 3,
     center: sf
   });
-  // This event listener calls addMarker() when the map is clicked.
-  google.maps.event.addListener(map, 'click', function(event) {
-    //console.log(event.latLng)
-    addMarker(event.latLng, map);
-    console.log(event.latLng.lat(),event.latLng.lng())
-  });
+
 }
 
 
