@@ -18,6 +18,48 @@
       <div class="col-md-offset-1 col-md-10" id="map"></div>
       <div class="controllers"></div>
     </div>
+    <div id="new-entry" class="container">
+      <form class="form-horizantal">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="title">Title:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="title" placeholder="Enter title">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="date">Date:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="date" placeholder="Enter date">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="author">Author:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="author" placeholder="Enter author">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="image">Image URL:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="image" placeholder="Enter image">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="note">Note:</label>
+          <div class="col-sm-10">
+            <textarea type="text" class="form-control" id="note" placeholder="Enter note"></textarea>
+          </div>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="bucket-list">Visited</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="bucket-list">Bucket List</label>
+        </div>
+        <button type="submit" class="btn btn-default">Save your Experience!</button>
+        <button type="button" class="btn btn-default">Cancel</button>
+      </form>
+    </div>
     <div id="main"  class="container">
       <script id="experience-handle-bar"  type="text/x-handlebars-template">
         {{#each Experience}}
@@ -37,12 +79,12 @@
         {{/each}}
       </script>
     </div>
-<footer id="footer">
- <ul id="footer-links">
- <li> <a href="#"> About </a></li>
- <li> <a class="fa fa-github" href="#"> </a></li>
- </ul>
-</footer>
+    <footer id="footer">
+      <ul id="footer-links">
+        <li> <a href="#"> About </a></li>
+        <li> <a class="fa fa-github" href="#"> </a></li>
+      </ul>
+    </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
