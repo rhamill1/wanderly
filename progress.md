@@ -6,3 +6,4 @@
   5) add one space before and after = sign
   6) save notes as one line in DB
   
+  

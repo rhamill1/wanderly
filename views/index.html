@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Wanderly</title>
 
+  <link href="https://fonts.googleapis.com/css?family=Lobster+Two:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles/styles.css">
-
+  <link rel="icon" href="http://dailydropcap.com/images/W-9.jpg">
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
 </head>
   <body>
     <h1 class="app-title"> Wanderly </h1>
@@ -17,7 +19,6 @@
       <div class="controllers"></div>
     </div>
     <div id="main"  class="container">
-
     <script id="experience-handle-bar"  type="text/x-handlebars-template">
       {{#each Experience}}
         <div class="box row" >
@@ -25,10 +26,10 @@
             <img src="{{image}}" class="imagetag" alt="personal images">
           </div>
           <div class="col-md-offset-1 col-md-5">
-            <h3> {{title}}<h3>
-            <p class="datetag"> {{date}}</p>
+            <h2> {{title}}</h2>
+            <p class="datetag"><strong>Date: </strong> {{date}}</p>
+            <p class="authortag"><strong>By: </strong> {{author}}</p>
             <p class="notetag"> {{note}}</p>
-            <p class="authortag"> {{author}}</p>
             <button class="fa fa-pencil-square-o" aria-hidden="true"></button>
             <button class="fa fa-times" ></button>
           </div>
@@ -36,7 +37,13 @@
       {{/each}}
     </script>
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
+<!-- <footer id="footer">
+ <ul id="footer-links">
+ <li> <a href="#"> About </a></li>
+ <li> <a class="fa fa-github" href="#"> </a></li>
+ </ul>
+</footer> -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script src="scripts/app.js"></script>
