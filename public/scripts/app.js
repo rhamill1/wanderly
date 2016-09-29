@@ -19,20 +19,38 @@ $(document).ready(function(){
             LatLng.lat = data[key].coordinates.lat;
             LatLng.lng = data[key].coordinates.lng;
             addMarker(LatLng, map)
-
-         }
+      }
     }
   });
+
 
   $('#new-entry-btn').on('click', function() {
     $('#new-entry').slideToggle('slow');
   });
 
 
+  var allExperiences = [];
+
   $('#experience-form').on('submit', function(e) {
     e.preventDefault();
-    // console.log($('#experience-form'));
-    console.log($('#experience-form').serialize());
+    var newExperience = $('#experience-form').serialize();
+    $.ajax({
+      method: "POST",
+      url: 'api/experiences',
+      data: newExperience,
+      success: function onCreateSuccess(json) {
+        allExperiences.push(json);
+        console.log(allExperiences);
+        // render();
+      }
+    });
+
+
+
+
+
+
+
   });
 
 });//ending ready
@@ -50,7 +68,6 @@ function initialize(){
     addMarker(event.latLng, map);
     console.log(event.latLng.lat(),event.latLng.lng())
   });
-
 }
 
 

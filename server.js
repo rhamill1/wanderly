@@ -18,6 +18,13 @@ app.get('/api/experiences', function index (req, res){
   });
 });
 
+app.post('/api/experiences', function index (req, res){
+  var item = new db.Experience(req.body);
+  item.save(function(err, newItem) {
+    res.json(newItem);
+  });
+});
+
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('server is running');
