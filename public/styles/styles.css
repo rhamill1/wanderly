@@ -28,6 +28,22 @@ body {
   display: none;
 }
 
+#footer-links {
+  list-style: none;
+  display:block;
+  text-align: center;
+  border-top: 2px solid #999999;
+  padding:10px;
+}
+
+#footer-links li {
+  display: inline;
+  padding:20px;
+}
+
+#footer-links li a{
+  color:#4d4d4d ;
+}
 /*   classes */
 .app-title {
   font-family:'Lobster Two', cursive;
@@ -57,8 +73,28 @@ body {
 
 .controllers {
   clear: both;
+  padding-bottom:30px;
+  padding-top:30px;
 }
 
 .form-group{
   padding:15px;
 }
+
+
+.btn{
+   background: #52527a;
+  color:#fff;
+  font-size: 18px;
+  border:none;
+}
+.form-btn{
+  float:right;
+  margin-left:10px;
+}
+
+.fa-github{
+  margin:0 auto;
+}
+
+

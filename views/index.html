@@ -31,7 +31,7 @@
         <div class="form-group">
           <label class="control-label col-sm-2" for="date">Date:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="date" placeholder="Enter date">
+            <input type="text" class="form-control" name="date" placeholder="YYYY-MM-DD">
           </div>
         </div>
         <div class="form-group">
@@ -41,17 +41,18 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-sm-2" for="image">Image URL:</label>
+          <label class="control-label col-sm-2" for="image">Image:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="image" placeholder="Enter image">
+            <input type="text" class="form-control" name="image" placeholder="Enter image URL">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="note">Note:</label>
           <div class="col-sm-10">
-            <textarea type="text" class="form-control" name="note" placeholder="Enter note"></textarea>
+            <textarea  class="form-control" name="note" placeholder="How was your experience?"></textarea>
           </div>
         </div>
+        <div class="radio-buttons">
         <label class="custom-control custom-radio">
           <input id="radio1" name="bucketList" type="radio" class="custom-control-input">
           <span class="custom-control-indicator"></span>
@@ -62,8 +63,9 @@
           <span class="custom-control-indicator"></span>
           <span class="custom-control-description">Bucket List</span>
         </label>
-        <button type="submit" class="btn btn-default">Save your Experience!</button>
-        <button type="button" class="btn btn-default">Cancel</button>
+        </div>
+        <button type="submit" class="btn form-btn btn-default">Save your Experience!</button>
+        <button type="button" class="btn form-btn btn-default">Cancel</button>
           <div class="form-group">
             <input type="text"  id="lat" name="lat" >
           </div>
@@ -91,10 +93,10 @@
         {{/each}}
       </script>
     </div>
-    <footer id="footer">
+    <footer class="container" id="footer">
       <ul id="footer-links">
         <li> <a href="#"> About </a></li>
-        <li> <a class="fa fa-github" href="#"> </a></li>
+        <li> <a href="#"> Github </a></li>
       </ul>
     </footer>
 
