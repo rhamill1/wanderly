@@ -51,7 +51,7 @@ $(document).ready(function(){
       url: 'api/experiences',
       data: newExperience,
       success: function onCreateSuccess(json) {
-        allExperiences.push(json);
+        allExperiences.shift(json);
         console.log("all: ",allExperiences);
         render(allExperiences);
         $('#new-entry').slideToggle('slow');
