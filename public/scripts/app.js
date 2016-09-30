@@ -84,7 +84,7 @@ $(document).ready(function(){
         });
         $('#main').toggle(true);
         $('#editSpace').toggle(false);
-        $('#new-entry-btn').toggle(false);
+        $('#new-entry-btn').toggle(true);
       }
     });
   });
@@ -130,6 +130,10 @@ $(document).ready(function(){
         var form = updateForm(json);
         console.log(form);
         $('#main').toggle(false);
+        var formHandleBarScript = $('#updateForm');
+        $('#editSpace').empty();
+        $('#editSpace').append(formHandleBarScript);
+        $('#editSpace').toggle(true);
         $('#editSpace').prepend(form);
       }
     });
