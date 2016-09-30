@@ -4,9 +4,7 @@ var allExperiences = [];
 
 $(document).ready(function(){
   console.log('js is ready!');
-  // google.maps.event.addDomListener(window, 'load', initialize);
   initialize();
-  //preparing handlebar
   var source = $('#experience-handle-bar').html();
   template = Handlebars.compile(source);
   var LatLng={lat:0,lng:0};
@@ -27,6 +25,7 @@ $(document).ready(function(){
     }
   });
 
+
   var newLocation={lat:null,lng:null};
 
   $('#new-entry-btn').on('click', function(){
@@ -44,8 +43,7 @@ $(document).ready(function(){
 
   $('#experience-form').on('submit', function(e) {
     e.preventDefault();
-    // getFromData();
-    var newExperience = getFormData(this); //$('#experience-form').serialize();
+    var newExperience = getFormData(this);
     $.ajax({
       method: "POST",
       url: 'api/experiences',
@@ -61,10 +59,10 @@ $(document).ready(function(){
     });
   });
 
+
   $('#editSpace').on('click','#submit-edits', function(e){
     e.preventDefault();
     var updateExperience = getFormData($('#update-experience-form'));
-    console.log(updateExperience);
   });
 
 
@@ -111,8 +109,6 @@ $(document).ready(function(){
         console.log(form);
         $('#main').toggle(false);
 
-
-
         // $('[data-experience-id='+editId+']').toggle();
          $('#editSpace').prepend(form);
         // $('#main').prepend(form);
@@ -131,31 +127,19 @@ function render(data){
   $('#main').append(content);
 }
 
+
 function getFormData(form){
-  //validating data
-  //making sure newLocation has value
-  console.log(form);
-  var userData = $(form).serialize();
-  console.log(userData);
-  return userData;
-  //return userData;
-  //reset the newLocation
+  var serializedForm = $(form).serialize();
+  console.log(serializedForm);
+  return serializedForm;
 }
-
-
-function getFormData(){
-  var userData = $('#experience-form').serialize();
-  console.log(userData);
-  return userData;
-}
-
 
 
 var map ;
 function initialize(){
   var sf = { lat: 36.01553, lng: -6.567 };
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 3,
+    zoom: 2,
     center: sf
   });
 }
