@@ -98,6 +98,17 @@ $(document).ready(function(){
       url: editUrl,
       success: function (json) {
         console.log(json);
+        var source = $('#updateForm').html();
+        var updateForm = Handlebars.compile(source);
+        var form = updateForm(json);
+        console.log(form);
+        $('#main').toggle(false);
+
+
+
+        // $('[data-experience-id='+editId+']').toggle();
+         $('#editSpace').prepend(form);
+        // $('#main').prepend(form);
         // render(allExperiences);
       }
     });

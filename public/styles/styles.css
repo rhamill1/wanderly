@@ -34,6 +34,8 @@ body {
   text-align: center;
   border-top: 2px solid #999999;
   padding:10px;
+  clear: both;
+  height: 100vh - 900px;
 }
 
 #footer-links li {
