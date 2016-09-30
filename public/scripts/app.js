@@ -29,7 +29,7 @@ $(document).ready(function(){
 
   var newLocation={lat:null,lng:null};
 
-  $('#new-entry-btn').on('click', function() {
+  $('#new-entry-btn').on('click', function(){
     $('#new-entry').slideToggle('slow');
       listenerHandle = map.addListener( 'click', function(event) {
       addMarker(event.latLng, map);
@@ -61,25 +61,10 @@ $(document).ready(function(){
     });
   });
 
-
-  $('#update-experience-form').on('submit', function(e) {
+  $('#editSpace').on('click','#submit-edits', function(e){
     e.preventDefault();
-
-    var updateExperience = getFormData(); //$('#experience-form').serialize();
+    var updateExperience = getFormData($('#update-experience-form'));
     console.log(updateExperience);
-    // $.ajax({
-    //   method: "POST",
-    //   url: 'api/experiences',
-    //   data: updateExperience,
-    //   success: function onCreateSuccess(json) {
-    //     allExperiences.shift(json);
-    //     console.log("all: ",allExperiences);
-    //     render(allExperiences);
-    //     $('#new-entry').slideToggle('slow');
-    //     $('#experience-form')[0].reset();
-    //     google.maps.event.removeListener(listenerHandle);
-    //   }
-    // });
   });
 
 
@@ -135,8 +120,6 @@ $(document).ready(function(){
       }
     });
   });
-
-
 });//ending ready
 
 
@@ -160,11 +143,11 @@ function getFormData(form){
 }
 
 
-// function getFormData(){
-//   var userData = $('#experience-form').serialize();
-//   console.log(userData);
-//   return userData;
-// }
+function getFormData(){
+  var userData = $('#experience-form').serialize();
+  console.log(userData);
+  return userData;
+}
 
 
 
