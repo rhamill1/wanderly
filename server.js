@@ -21,7 +21,7 @@ app.get('/api/experiences', function index (req, res){
 });
 
 
-app.get('/api/experiences/:id', function (req, res) {
+app.get('/api/experiences/:id', function (req, res){
   db.Experience.findOne({_id: req.params.id}, function(err, item) {
     console.log('returned this one!',item);
     res.json(item);
@@ -46,7 +46,25 @@ app.post('/api/experiences', function index (req, res){
 });
 
 
-app.delete('/api/experiences/:id', function (req, res) {
+app.put('/api/experiences/:id', function (req, res){
+  db.Experience.findOne({_id: req.params.id}, function(err, found){
+    if(err) throw err;
+    found.title = req.body.title,
+    found.date = req.body.date,
+    found.coordinates = {lat: +req.body.lat, lng: +req.body.lng},
+    found.image = req.body.image,
+    found.author = req.body.author,
+    found.note = req.body.note,
+    found.bucketList = req.body.bucketList;
+    found.save();
+    db.Experience.find({},function(err,list){
+      res.json(list);
+    });
+  });
+})
+
+
+app.delete('/api/experiences/:id', function (req, res){
   db.Experience.findOneAndRemove({_id: req.params.id}, function(err, item) {
     console.log('deleted item',item);
     res.json(item);

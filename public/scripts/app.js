@@ -63,6 +63,15 @@ $(document).ready(function(){
   $('#editSpace').on('click','#submit-edits', function(e){
     e.preventDefault();
     var updateExperience = getFormData($('#update-experience-form'));
+    var editId = $(this).closest('form#update-experience-form').attr('data-edit-id');
+    $.ajax({
+      method: 'PUT',
+      url: '/api/experiences/' + editId,
+      data: updateExperience,
+      success: function (json) {
+        render(json);
+      }
+    })
   });
 
 
