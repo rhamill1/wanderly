@@ -21,6 +21,14 @@ app.get('/api/experiences', function index (req, res){
 });
 
 
+app.get('/api/experiences/:id', function (req, res) {
+  db.Experience.findOne({_id: req.params.id}, function(err, item) {
+    console.log('returned this one!',item);
+    res.json(item);
+  });
+});
+
+
 app.post('/api/experiences', function index (req, res){
   var item = new db.Experience({
     title:req.body.title,

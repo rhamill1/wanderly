@@ -64,7 +64,6 @@ $(document).ready(function(){
 
   $('#main').on('click', '.deleteBtn', function(e) {
     e.preventDefault();
-    // console.log($(this).closest('.row').attr('data-experience-id'));
     $.ajax({
       method: 'DELETE',
       url: '/api/experiences/' + $(this).closest('.row').attr('data-experience-id'),
@@ -82,6 +81,29 @@ $(document).ready(function(){
       }
     });
   });
+
+
+  $('#main').on('click', '.editBtn', function(e) {
+    e.preventDefault();
+    // console.log('editing', $(this).closest('.row').attr('data-experience-id'));
+    var editId = $(this).closest('.row').attr('data-experience-id');
+    var editUrl = '/api/experiences/' + editId;
+    var confEdit = document.createElement('button');
+    confEdit.setAttribute('class', 'fa fa-floppy-o');
+    $(this).parent().append(confEdit);
+    $(this).toggle(false);
+
+    $.ajax({
+      method: 'GET',
+      url: editUrl,
+      success: function (json) {
+        console.log(json);
+        // render(allExperiences);
+      }
+    });
+  });
+
+
 });//ending ready
 
 
