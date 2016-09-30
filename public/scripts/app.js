@@ -68,10 +68,25 @@ $(document).ready(function(){
       method: 'PUT',
       url: '/api/experiences/' + editId,
       data: updateExperience,
-      success: function (json) {
-        render(json);
+      success: function(data) {
+        $.ajax({
+          type: 'GET',
+          url: 'api/experiences',
+          data: [],
+          success: function(data) {
+            render(data);
+            for(var key in data){
+              LatLng.lat = data[key].coordinates.lat;
+              LatLng.lng = data[key].coordinates.lng;
+              addMarker(LatLng, map)
+            }
+          }
+        });
+        $('#main').toggle(true);
+        $('#editSpace').toggle(false);
+        $('#new-entry-btn').toggle(false);
       }
-    })
+    });
   });
 
 
@@ -98,7 +113,6 @@ $(document).ready(function(){
 
   $('#main').on('click', '.editBtn', function(e) {
     e.preventDefault();
-    // console.log('editing', $(this).closest('.row').attr('data-experience-id'));
     var editId = $(this).closest('.row').attr('data-experience-id');
     var editUrl = '/api/experiences/' + editId;
     var confEdit = document.createElement('button');
@@ -106,7 +120,6 @@ $(document).ready(function(){
     $(this).parent().append(confEdit);
     $(this).toggle(false);
     $('#new-entry-btn').toggle(false);
-
     $.ajax({
       method: 'GET',
       url: editUrl,
@@ -117,14 +130,12 @@ $(document).ready(function(){
         var form = updateForm(json);
         console.log(form);
         $('#main').toggle(false);
-
-        // $('[data-experience-id='+editId+']').toggle();
-         $('#editSpace').prepend(form);
-        // $('#main').prepend(form);
-        // render(allExperiences);
+        $('#editSpace').prepend(form);
       }
     });
   });
+
+
 });//ending ready
 
 

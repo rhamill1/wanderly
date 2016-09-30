@@ -58,6 +58,7 @@ app.put('/api/experiences/:id', function (req, res){
     found.bucketList = req.body.bucketList;
     found.save();
     db.Experience.find({},function(err,list){
+      console.log(list);
       res.json(list);
     });
   });
