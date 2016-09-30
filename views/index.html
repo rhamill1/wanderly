@@ -74,20 +74,78 @@
           </div>
       </form>
     </div>
+    <div id="editSpace">
+      <script id="updateForm" type="text/x-handlebars-template">
+        <form class="form-horizantal col-md-offset-2 col-md-8" id="update-experience-form">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="title">Title:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="title" placeholder="{{title}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="date">Date:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="date" placeholder="{{date}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="author">Author:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="author" placeholder="{{author}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="image">Image:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="image" placeholder="{{image}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="note">Note:</label>
+            <div class="col-sm-10">
+              <textarea  class="form-control" name="note" placeholder="{{note}}"></textarea>
+            </div>
+          </div>
+          <div class="radio-buttons">
+          <label class="custom-control custom-radio">
+            <input id="radio1" name="bucketList" type="radio" class="custom-control-input">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Visited?</span>
+          </label>
+          <label class="custom-control custom-radio">
+            <input id="radio2" name="bucketList" type="radio" class="custom-control-input">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Bucket List</span>
+          </label>
+          </div>
+          <button type="submit" class="btn form-btn btn-default">Save your Experience!</button>
+          <button type="button" class="btn form-btn btn-default">Cancel</button>
+            <div class="form-group">
+              <input type="text"  id="lat" name="lat" >
+            </div>
+            <div class="col-sm-10">
+              <input type="text"  id="lng" name="lng" >
+            </div>
+        </form>
+      </script>
+    </div>
     <div id="main"  class="container">
       <script id="experience-handle-bar"  type="text/x-handlebars-template">
         {{#each Experience}}
-          <div class="box row" data-album-id="{{_id}}">
-            <div class="col-md-5">
-              <img src="{{image}}" class="imagetag" alt="personal images">
-            </div>
-            <div class="col-md-offset-1 col-md-5">
-              <h2> {{title}}</h2>
-              <p class="datetag"><strong>Date: </strong> {{date}}</p>
-              <p class="authortag"><strong>By: </strong> {{author}}</p>
-              <p class="notetag"> {{note}}</p>
-              <button class="fa fa-pencil-square-o" aria-hidden="true"></button>
-              <button class="fa fa-times" ></button>
+          <div class="experience-item">
+            <div class="box row" data-experience-id="{{_id}}">
+              <div class="col-md-5">
+                <img src="{{image}}" class="imagetag" alt="personal images">
+              </div>
+              <div class="col-md-offset-1 col-md-5">
+                <h2> {{title}}</h2>
+                <p class="datetag"><strong>Date: </strong> {{date}}</p>
+                <p class="authortag"><strong>By: </strong> {{author}}</p>
+                <p class="notetag"> {{note}}</p>
+                <button class="fa fa-pencil-square-o editBtn" aria-hidden="true"></button>
+                <button class="fa fa-times deleteBtn" ></button>
+              </div>
             </div>
           </div>
         {{/each}}

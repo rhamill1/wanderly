@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var db = require('./models');
 
+
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -11,6 +12,7 @@ app.get('/', function homepage (req, res){
   res.sendFile(__dirname + '/views/index.html');
 });
 
+
 app.get('/api/experiences', function index (req, res){
   db.Experience.find({}, function(err, list) {
     console.log(list);
@@ -18,8 +20,16 @@ app.get('/api/experiences', function index (req, res){
   });
 });
 
-app.post('/api/experiences', function index (req, res){
 
+app.get('/api/experiences/:id', function (req, res) {
+  db.Experience.findOne({_id: req.params.id}, function(err, item) {
+    console.log('returned this one!',item);
+    res.json(item);
+  });
+});
+
+
+app.post('/api/experiences', function index (req, res){
   var item = new db.Experience({
     title:req.body.title,
     date: req.body.date,
@@ -32,6 +42,14 @@ app.post('/api/experiences', function index (req, res){
     console.log(item)
   item.save(function(err, newItem) {
     res.json(newItem);
+  });
+});
+
+
+app.delete('/api/experiences/:id', function (req, res) {
+  db.Experience.findOneAndRemove({_id: req.params.id}, function(err, item) {
+    console.log('deleted item',item);
+    res.json(item);
   });
 });
 
