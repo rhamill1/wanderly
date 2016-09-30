@@ -31,7 +31,7 @@ $(document).ready(function(){
 
   $('#new-entry-btn').on('click', function() {
     $('#new-entry').slideToggle('slow');
-      google.maps.event.addListener(map, 'click', function(event) {
+        listenerHandle = map.addListener( 'click', function(event) {
         addMarker(event.latLng, map);
         newLocation.lat = event.latLng.lat();
         newLocation.lng = event.latLng.lng();
@@ -56,7 +56,7 @@ $(document).ready(function(){
         render(allExperiences);
         $('#new-entry').slideToggle('slow');
         $('#experience-form')[0].reset();
-        //google.maps.event.removeEventListener(map, 'click');
+        google.maps.event.removeListener(listenerHandle);
       }
     });
   });

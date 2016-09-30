@@ -22,6 +22,7 @@ body {
 
 #new-entry {
   display: none;
+  padding-bottom:50px;
 }
 #lat,#lng {
   display: none;
@@ -38,11 +39,14 @@ body {
 
 .imagetag{
   width:500px;
+  box-shadow: 0px 2px 34px -5px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 2px 34px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 2px 34px -5px rgba(0,0,0,0.75);
 
 }
 
 .box {
-  margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .fa {
@@ -53,4 +57,8 @@ body {
 
 .controllers {
   clear: both;
+}
+
+.form-group{
+  padding:15px;
 }
