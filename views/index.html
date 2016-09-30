@@ -77,7 +77,7 @@
     <div id="main"  class="container">
       <script id="experience-handle-bar"  type="text/x-handlebars-template">
         {{#each Experience}}
-          <div class="box row" data-album-id="{{_id}}">
+          <div class="box row" data-experience-id="{{_id}}">
             <div class="col-md-5">
               <img src="{{image}}" class="imagetag" alt="personal images">
             </div>
@@ -87,7 +87,7 @@
               <p class="authortag"><strong>By: </strong> {{author}}</p>
               <p class="notetag"> {{note}}</p>
               <button class="fa fa-pencil-square-o" aria-hidden="true"></button>
-              <button class="fa fa-times" ></button>
+              <button class="fa fa-times deleteBtn" ></button>
             </div>
           </div>
         {{/each}}
