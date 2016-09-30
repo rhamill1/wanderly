@@ -45,13 +45,13 @@ $(document).ready(function(){
   $('#experience-form').on('submit', function(e) {
     e.preventDefault();
     // getFromData();
-    var newExperience = getFormData(); //$('#experience-form').serialize();
+    var newExperience = getFormData(this); //$('#experience-form').serialize();
     $.ajax({
       method: "POST",
       url: 'api/experiences',
       data: newExperience,
       success: function onCreateSuccess(json) {
-        allExperiences.shift(json);
+        allExperiences.push(json);
         console.log("all: ",allExperiences);
         render(allExperiences);
         $('#new-entry').slideToggle('slow');
@@ -59,6 +59,27 @@ $(document).ready(function(){
         google.maps.event.removeListener(listenerHandle);
       }
     });
+  });
+
+
+  $('#update-experience-form').on('submit', function(e) {
+    e.preventDefault();
+
+    var updateExperience = getFormData(); //$('#experience-form').serialize();
+    console.log(updateExperience);
+    // $.ajax({
+    //   method: "POST",
+    //   url: 'api/experiences',
+    //   data: updateExperience,
+    //   success: function onCreateSuccess(json) {
+    //     allExperiences.shift(json);
+    //     console.log("all: ",allExperiences);
+    //     render(allExperiences);
+    //     $('#new-entry').slideToggle('slow');
+    //     $('#experience-form')[0].reset();
+    //     google.maps.event.removeListener(listenerHandle);
+    //   }
+    // });
   });
 
 
@@ -92,6 +113,7 @@ $(document).ready(function(){
     confEdit.setAttribute('class', 'fa fa-floppy-o');
     $(this).parent().append(confEdit);
     $(this).toggle(false);
+    $('#new-entry-btn').toggle(false);
 
     $.ajax({
       method: 'GET',
@@ -126,15 +148,25 @@ function render(data){
   $('#main').append(content);
 }
 
-function getFormData(){
+function getFormData(form){
   //validating data
   //making sure newLocation has value
-  var userData = $('#experience-form').serialize();
+  console.log(form);
+  var userData = $(form).serialize();
   console.log(userData);
   return userData;
   //return userData;
   //reset the newLocation
 }
+
+
+// function getFormData(){
+//   var userData = $('#experience-form').serialize();
+//   console.log(userData);
+//   return userData;
+// }
+
+
 
 var map ;
 function initialize(){
