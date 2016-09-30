@@ -1,5 +1,6 @@
 var template;
 var content;
+var allExperiences = [];
 
 $(document).ready(function(){
   console.log('js is ready!');
@@ -15,66 +16,72 @@ $(document).ready(function(){
     url: 'api/experiences',
     data: [],
     success: function(data) {
-      console.log(data);
-      var content = template({Experience : data});
+      allExperiences = data;
+      window.content = template({Experience : data});
       $('#main').append(content);
-      // for(var key in data){
-      //       LatLng.lat = data[key].coordinates.lat;
-      //       LatLng.lng = data[key].coordinates.lng;
-      //       addMarker(LatLng, map)
-      // }
+      for(var key in data){
+            LatLng.lat = data[key].coordinates.lat;
+            LatLng.lng = data[key].coordinates.lng;
+            addMarker(LatLng, map)
+      }
     }
   });
 
- var newLocation={lat:0,lng:0};
+ var newLocation={lat:null,lng:null};
 
   $('#new-entry-btn').on('click', function() {
     $('#new-entry').slideToggle('slow');
       google.maps.event.addListener(map, 'click', function(event) {
         addMarker(event.latLng, map);
-
         newLocation.lat = event.latLng.lat();
         newLocation.lng = event.latLng.lng();
-        console.log(newLocation)
+        $('#lat').val(newLocation.lat);
+        $('#lng').val(newLocation.lng);
+        console.log("picked: ",newLocation);
     });
   });
 
 
-  var allExperiences = [];
-
   $('#experience-form').on('submit', function(e) {
     e.preventDefault();
     // getFromData();
-    var newExperience = $('#experience-form').serialize();
+    var newExperience = getFormData(); //$('#experience-form').serialize();
     $.ajax({
       method: "POST",
       url: 'api/experiences',
       data: newExperience,
       success: function onCreateSuccess(json) {
         allExperiences.push(json);
-        console.log(allExperiences);
-        render(json);
-        //$('#new-entry').slideToggle('slow');
+        console.log("all: ",allExperiences);
+        render(allExperiences);
+        $('#new-entry').slideToggle('slow');
         $('#experience-form')[0].reset();
+        //google.maps.event.removeEventListener(map, 'click');
       }
     });
-
-
   });
 
 });//ending ready
 
 
 function render(data){
-  $('#Experience').empty();
-  content = template({Experience : data});
-  console.log(content)
-  $('#Experience').append(content);
+  var handleBarScripts = $('#experience-handle-bar');
+  $('#main').empty();
+  $('#main').append(handleBarScripts);
+  window.content = template({Experience : data});
+  $('#main').append(content);
 
 }
 
 function getFormData(){
+   //validating data
+   //making sure newLocation has value
 
+   var userData = $('#experience-form').serialize();
+   console.log(userData);
+   return userData;
+   //return userData;
+   //reset the newLocation
 }
 
 var map ;

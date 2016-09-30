@@ -23,6 +23,9 @@ body {
 #new-entry {
   display: none;
 }
+#lat,#lng {
+  display: none;
+}
 
 /*   classes */
 .app-title {

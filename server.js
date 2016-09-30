@@ -19,7 +19,17 @@ app.get('/api/experiences', function index (req, res){
 });
 
 app.post('/api/experiences', function index (req, res){
-  var item = new db.Experience(req.body);
+
+  var item = new db.Experience({
+    title:req.body.title,
+    date: req.body.date,
+    coordinates: {lat: +req.body.lat, lng: +req.body.lng},
+    image:req.body.image,
+    author: req.body.author,
+    note:req.body.note,
+    bucketList: req.body.bucketList
+  });
+    console.log(item)
   item.save(function(err, newItem) {
     res.json(newItem);
   });
