@@ -3,7 +3,8 @@ var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
   name: String,
-  image: String
+  image: String,
+  marker:String
 });
 
 var User = mongoose.model('User', userSchema);
