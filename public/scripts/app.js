@@ -96,8 +96,10 @@ $(document).ready(function(){
 
   //event listener for closing the edit form
   $('#editSpace').on('click','.cancel', function(e){
-    $(this).parent().toggle(false);
-    $(this).closest('form#update-experience-form').reset();
+    $('#editSpace').toggle(false);
+    $('#main').toggle(true);
+    $('#editSpace').toggle(false);
+    $('#new-entry-btn').toggle(true);
     //put main back
   });
 
@@ -127,10 +129,10 @@ $(document).ready(function(){
     e.preventDefault();
     var editId = $(this).closest('.row').attr('data-experience-id');
     var editUrl = '/api/experiences/' + editId;
-    var confEdit = document.createElement('button');
-    confEdit.setAttribute('class', 'fa fa-floppy-o');
-    $(this).parent().append(confEdit);
-    $(this).toggle(false);
+    // var confEdit = document.createElement('button');
+    // confEdit.setAttribute('class', 'fa fa-floppy-o');
+    // $(this).parent().append(confEdit);
+    // $(this).toggle(false);
     $('#new-entry-btn').toggle(false);
     $.ajax({
       method: 'GET',
