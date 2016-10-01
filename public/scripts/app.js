@@ -91,6 +91,7 @@ $(document).ready(function(){
         $('#main').toggle(true);
         $('#editSpace').toggle(false);
         $('#new-entry-btn').toggle(true);
+        listenerHandle.remove();
       }
     });
   });
@@ -101,6 +102,7 @@ $(document).ready(function(){
     $('#main').toggle(true);
     $('#editSpace').toggle(false);
     $('#new-entry-btn').toggle(true);
+    listenerHandle.remove();
     //put main back
   });
 
@@ -134,6 +136,14 @@ $(document).ready(function(){
     // confEdit.setAttribute('class', 'fa fa-floppy-o');
     // $(this).parent().append(confEdit);
     // $(this).toggle(false);
+     listenerHandle = map.addListener( 'click', function(event) {
+      addMarker(event.latLng, map);
+      newLocation.lat = event.latLng.lat();
+      newLocation.lng = event.latLng.lng();
+      $('#lat').val(newLocation.lat);
+      $('#lng').val(newLocation.lng);
+      console.log("picked: ",newLocation);
+    });
     $('#new-entry-btn').toggle(false);
     $.ajax({
       method: 'GET',
