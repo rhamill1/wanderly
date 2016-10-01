@@ -24,7 +24,7 @@ body {
   display: none;
   padding-bottom:50px;
 }
-#lat,#lng {
+.lat,.lng {
   display: none;
 }
 

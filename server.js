@@ -15,7 +15,7 @@ app.get('/', function homepage (req, res){
 
 app.get('/api/experiences', function index (req, res){
   db.Experience.find({}, function(err, list) {
-    console.log(list);
+    //console.log(list);
     res.json(list);
   });
 });
@@ -23,7 +23,6 @@ app.get('/api/experiences', function index (req, res){
 
 app.get('/api/experiences/:id', function (req, res){
   db.Experience.findOne({_id: req.params.id}, function(err, item) {
-    console.log('returned this one!',item);
     res.json(item);
   });
 });
