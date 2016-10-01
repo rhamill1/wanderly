@@ -29,7 +29,7 @@ $(document).ready(function(){
   var newLocation={lat:null,lng:null};
 
   $('#new-entry-btn').on('click', function(){
-    $('#new-entry').slideToggle('slow');
+    $('#new-entry').toggle(true);
       listenerHandle = map.addListener( 'click', function(event) {
       addMarker(event.latLng, map);
       newLocation.lat = event.latLng.lat();
@@ -59,6 +59,11 @@ $(document).ready(function(){
     });
   });
 
+  //event listener for
+  $('#new-entry').on('click','.cancel', function(e){
+    $('#new-entry').toggle(false);
+    $('#experience-form')[0].reset();
+  });
 
   $('#editSpace').on('click','#submit-edits', function(e){
     e.preventDefault();
@@ -87,6 +92,13 @@ $(document).ready(function(){
         $('#new-entry-btn').toggle(true);
       }
     });
+  });
+
+  //event listener for closing the edit form
+  $('#editSpace').on('click','.cancel', function(e){
+    $(this).parent().toggle(false);
+    $(this).closest('form#update-experience-form').reset();
+    //put main back
   });
 
 
