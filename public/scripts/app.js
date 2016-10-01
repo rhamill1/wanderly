@@ -54,7 +54,7 @@ $(document).ready(function(){
         render(allExperiences);
         $('#new-entry').slideToggle('slow');
         $('#experience-form')[0].reset();
-        google.maps.event.removeListener(listenerHandle);
+        listenerHandle.remove();
       }
     });
   });
@@ -63,6 +63,7 @@ $(document).ready(function(){
   $('#new-entry').on('click','.cancel', function(e){
     $('#new-entry').toggle(false);
     $('#experience-form')[0].reset();
+    listenerHandle.remove();
   });
 
   $('#editSpace').on('click','#submit-edits', function(e){
