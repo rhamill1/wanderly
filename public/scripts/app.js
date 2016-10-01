@@ -1,6 +1,7 @@
 var template;
 var content;
 var allExperiences = [];
+var markers = [];
 
 $(document).ready(function(){
   console.log('js is ready!');
@@ -30,12 +31,12 @@ $(document).ready(function(){
 
   $('#new-entry-btn').on('click', function(){
     $('#new-entry').toggle(true);
-      listenerHandle = map.addListener( 'click', function(event) {
+      listenerHandle = map.addListener('click', function(event) {
       addMarker(event.latLng, map);
       newLocation.lat = event.latLng.lat();
       newLocation.lng = event.latLng.lng();
-      $('#lat').val(newLocation.lat);
-      $('#lng').val(newLocation.lng);
+      $('.lat').val(newLocation.lat);
+      $('.lng').val(newLocation.lng);
       console.log("picked: ",newLocation);
     });
   });
@@ -54,7 +55,7 @@ $(document).ready(function(){
         render(allExperiences);
         $('#new-entry').slideToggle('slow');
         $('#experience-form')[0].reset();
-        google.maps.event.removeListener(listenerHandle);
+        listenerHandle.remove();
       }
     });
   });
@@ -63,11 +64,13 @@ $(document).ready(function(){
   $('#new-entry').on('click','.cancel', function(e){
     $('#new-entry').toggle(false);
     $('#experience-form')[0].reset();
+    listenerHandle.remove();
   });
 
   $('#editSpace').on('click','#submit-edits', function(e){
     e.preventDefault();
     var updateExperience = getFormData($('#update-experience-form'));
+    console.log("edited info",updateExperience)
     var editId = $(this).closest('form#update-experience-form').attr('data-edit-id');
     $.ajax({
       method: 'PUT',
@@ -79,7 +82,9 @@ $(document).ready(function(){
           url: 'api/experiences',
           data: [],
           success: function(data) {
+            allExperiences = data;
             render(data);
+            setMapOnAll(null);
             for(var key in data){
               LatLng.lat = data[key].coordinates.lat;
               LatLng.lng = data[key].coordinates.lng;
@@ -90,6 +95,7 @@ $(document).ready(function(){
         $('#main').toggle(true);
         $('#editSpace').toggle(false);
         $('#new-entry-btn').toggle(true);
+        listenerHandle.remove();
       }
     });
   });
@@ -100,6 +106,7 @@ $(document).ready(function(){
     $('#main').toggle(true);
     $('#editSpace').toggle(false);
     $('#new-entry-btn').toggle(true);
+    listenerHandle.remove();
     //put main back
   });
 
@@ -129,10 +136,14 @@ $(document).ready(function(){
     e.preventDefault();
     var editId = $(this).closest('.row').attr('data-experience-id');
     var editUrl = '/api/experiences/' + editId;
-    // var confEdit = document.createElement('button');
-    // confEdit.setAttribute('class', 'fa fa-floppy-o');
-    // $(this).parent().append(confEdit);
-    // $(this).toggle(false);
+     listenerHandle = map.addListener( 'click', function(event) {
+      addMarker(event.latLng, map);
+      newLocation.lat = event.latLng.lat();
+      newLocation.lng = event.latLng.lng();
+      $('.lat').val(newLocation.lat);
+      $('.lng').val(newLocation.lng);
+      console.log("picked: ",newLocation);
+    });
     $('#new-entry-btn').toggle(false);
     $.ajax({
       method: 'GET',
@@ -175,10 +186,10 @@ function getFormData(form){
 
 var map ;
 function initialize(){
-  var sf = { lat: 36.01553, lng: -6.567 };
+  var initLocation = { lat: 36.01553, lng: -6.567 };
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 2,
-    center: sf
+    center: initLocation
   });
 }
 
@@ -187,14 +198,18 @@ var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
 
 function addMarker(location, map) {
-  console.log("in lo: ",location.lat)
-
   var marker = new google.maps.Marker({
     position: location,
     label: labels[labelIndex++ % labels.length],
     animation: google.maps.Animation.DROP,
     map: map
   });
-  console.log(marker)
   marker.setMap(map);
+  markers.push(marker);
+}
+
+function setMapOnAll(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
 }
