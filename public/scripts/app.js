@@ -5,6 +5,7 @@ var markers = [];
 
 $(document).ready(function(){
   console.log('js is ready!');
+  // $('#myModal').modal({show: false});
   initialize();
   var source = $('#experience-handle-bar').html();
   template = Handlebars.compile(source);
@@ -126,6 +127,8 @@ $(document).ready(function(){
             break;
           }
         }
+        // $('#myModal').modal('show');
+        alert('experience successfully removed');
         render(allExperiences);
       }
     });
