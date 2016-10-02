@@ -8,13 +8,26 @@
   <link href="https://fonts.googleapis.com/css?family=Lobster+Two:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/css/bootstrap-modal.min.css">
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="icon" href="http://dailydropcap.com/images/W-9.jpg">
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
 </head>
   <body>
-    <h1 class="app-title"> Wanderly </h1>
-    <div class="container">
+    <div>
+      <h1 class="app-title"> Wanderly </h1>
+      <div id="userSelection">
+        <form  id="userForm">
+          <select name="userList" id="userList">
+            <option value="no user"> who are you? </option>
+            <option value="Ryan">Ryan </option>
+            <option value="Sherri">Sherri</option>
+            <option value="Bob">Bob</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    <div class="container control-container">
       <div class="col-md-offset-1 col-md-10" id="map"></div>
     </div>
     <div class="controllers col-md-offset-1">
@@ -35,12 +48,6 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-sm-2" for="author">Author:</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" name="author" placeholder="Enter author">
-          </div>
-        </div>
-        <div class="form-group">
           <label class="control-label col-sm-2" for="image">Image:</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" name="image" placeholder="Enter image URL">
@@ -52,24 +59,22 @@
             <textarea  class="form-control" name="note" placeholder="How was your experience?"></textarea>
           </div>
         </div>
-        <div class="radio-buttons">
-        <label class="custom-control custom-radio">
-          <input id="radio1" name="bucketList" type="radio" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Visited?</span>
-        </label>
-        <label class="custom-control custom-radio">
-          <input id="radio2" name="bucketList" type="radio" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Bucket List</span>
-        </label>
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              <input class="bucketCheck" value="" type="checkbox" name="bucketList">Bucket List
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control userName" name="author"  placeholder="Enter author">
         </div>
         <button type="submit" class="btn form-btn btn-default">Save your Experience!</button>
         <button type="button" class="btn form-btn btn-default cancel">Cancel</button>
           <div class="form-group">
             <input type="text"  class="lat" name="lat" >
           </div>
-          <div class="col-sm-10">
+          <div class="form-group">
             <input type="text"  class="lng" name="lng" >
           </div>
       </form>
@@ -107,17 +112,10 @@
               <textarea  class="form-control" name="note" >{{note}}</textarea>
             </div>
           </div>
-          <div class="radio-buttons">
-          <label class="custom-control custom-radio">
-            <input id="radio1" name="bucketList" type="radio" class="custom-control-input">
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Visited?</span>
-          </label>
-          <label class="custom-control custom-radio">
-            <input id="radio2" name="bucketList" type="radio" class="custom-control-input">
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Bucket List</span>
-          </label>
+         <div class="checkbox">
+            <label>
+              <input class="bucketCheck" value="" type="checkbox" name="bucketList" {{bucketList}}>Bucket List
+            </label>
           </div>
           <button type="submit" id="submit-edits" class="btn form-btn btn-default">Save your Experience!</button>
           <button type="button" class="btn form-btn btn-default cancel">Cancel</button>
@@ -151,6 +149,25 @@
         {{/each}}
       </script>
     </div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="container" id="footer">
       <ul id="footer-links">
         <li> <a href="#"> About </a></li>
@@ -162,7 +179,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="https://use.fontawesome.com/7b050a501f.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.min.js"></script>
   </body>
 </html>
 

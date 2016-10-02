@@ -2,13 +2,21 @@ var template;
 var content;
 var allExperiences = [];
 var markers = [];
+var currentUser;
 
 $(document).ready(function(){
   console.log('js is ready!');
+  // $('#myModal').modal({show: false});
   initialize();
   var source = $('#experience-handle-bar').html();
   template = Handlebars.compile(source);
   var LatLng={lat:0,lng:0};
+
+
+  $("#userList").on('change', function() {
+    currentUser = $(this).val();
+  });
+
 
   $.ajax({
     type: 'GET',
@@ -44,6 +52,8 @@ $(document).ready(function(){
 
   $('#experience-form').on('submit', function(e) {
     e.preventDefault();
+    $('#experience-form').find('.userName').val(currentUser);
+    console.log( $('#experience-form').find('.userName').val());
     var newExperience = getFormData(this);
     $.ajax({
       method: "POST",
@@ -126,6 +136,8 @@ $(document).ready(function(){
             break;
           }
         }
+        // $('#myModal').modal('show');
+        alert('experience successfully removed');
         render(allExperiences);
       }
     });
@@ -179,6 +191,9 @@ function render(data){
 
 function getFormData(form){
   var serializedForm = $(form).serialize();
+  var bucketStatus = ($(form).find('.bucketCheck').is(':checked'))? 'checked': '';
+  console.log(bucketStatus);
+  serializedForm += '&bucketList=' + bucketStatus;
   console.log(serializedForm);
   return serializedForm;
 }

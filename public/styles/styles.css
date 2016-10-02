@@ -75,6 +75,7 @@ footer {
   margin-left:50px;
   padding:10px;
   color:#800080;
+  display: inline-block;
 }
 
 .imagetag{
@@ -126,4 +127,16 @@ footer {
 
 #text-box {
   margin: 0 2em 0 2em;
+}
+
+#userSelection {
+  float: right;
+}
+
+.control-container {
+  clear: both;
+}
+
+#userName {
+  display: none;
 }
