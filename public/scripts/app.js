@@ -164,7 +164,8 @@ function initialize(){
   var sf = { lat: 36.01553, lng: -6.567 };
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 2,
-    center: sf
+    center: sf,
+    mapTypeId: 'satellite'
   });
 }
 
