@@ -136,3 +136,7 @@ footer {
 .control-container {
   clear: both;
 }
+
+#userName {
+  display: none;
+}

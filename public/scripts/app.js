@@ -2,6 +2,7 @@ var template;
 var content;
 var allExperiences = [];
 var markers = [];
+var currentUser;
 
 $(document).ready(function(){
   console.log('js is ready!');
@@ -10,6 +11,12 @@ $(document).ready(function(){
   var source = $('#experience-handle-bar').html();
   template = Handlebars.compile(source);
   var LatLng={lat:0,lng:0};
+
+
+  $("#userList").on('change', function() {
+    currentUser = $(this).val();
+  });
+
 
   $.ajax({
     type: 'GET',
@@ -45,6 +52,8 @@ $(document).ready(function(){
 
   $('#experience-form').on('submit', function(e) {
     e.preventDefault();
+    $('#experience-form').find('.userName').val(currentUser);
+    console.log( $('#experience-form').find('.userName').val());
     var newExperience = getFormData(this);
     $.ajax({
       method: "POST",

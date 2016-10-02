@@ -18,7 +18,7 @@
       <h1 class="app-title"> Wanderly </h1>
       <div id="userSelection">
         <form  id="userForm">
-          <select name="Icecream Flavours">
+          <select name="userList" id="userList">
             <option value="no user"> who are you? </option>
             <option value="Ryan">Ryan </option>
             <option value="Sherri">Sherri</option>
@@ -48,12 +48,6 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-sm-2" for="author">Author:</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" name="author" placeholder="Enter author">
-          </div>
-        </div>
-        <div class="form-group">
           <label class="control-label col-sm-2" for="image">Image:</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" name="image" placeholder="Enter image URL">
@@ -72,12 +66,15 @@
             </label>
           </div>
         </div>
+        <div class="form-group">
+          <input type="text" class="form-control userName" name="author"  placeholder="Enter author">
+        </div>
         <button type="submit" class="btn form-btn btn-default">Save your Experience!</button>
         <button type="button" class="btn form-btn btn-default cancel">Cancel</button>
           <div class="form-group">
             <input type="text"  class="lat" name="lat" >
           </div>
-          <div class="col-sm-10">
+          <div class="form-group">
             <input type="text"  class="lng" name="lng" >
           </div>
       </form>
