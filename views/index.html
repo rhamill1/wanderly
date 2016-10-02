@@ -14,8 +14,20 @@
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
 </head>
   <body>
-    <h1 class="app-title"> Wanderly </h1>
-    <div class="container">
+    <div>
+      <h1 class="app-title"> Wanderly </h1>
+      <div id="userSelection">
+        <form  id="userForm">
+          <select name="Icecream Flavours">
+            <option value="no user"> who are you? </option>
+            <option value="Ryan">Ryan </option>
+            <option value="Sherri">Sherri</option>
+            <option value="Bob">Bob</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    <div class="container control-container">
       <div class="col-md-offset-1 col-md-10" id="map"></div>
     </div>
     <div class="controllers col-md-offset-1">

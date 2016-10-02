@@ -8,7 +8,7 @@ newExperiences.push(
     date: '2009-10-01',
     coordinates: {lat: 22.517, lng: -245.984},
     image: 'http://assets.fodors.com/destinations/54468/boat-harbor-hong-kong-china-1_main.jpg',
-    author: 'me',
+    author: 'Ryan',
     note: 'It was fun.  The food was nice.',
     bucketList: ''
   }
@@ -20,7 +20,7 @@ newExperiences.push(
     date: '2008-01-01',
     coordinates: {lat: -33.138, lng: -338.467},
     image: 'http://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2015/12/GettyImages-140893867_full.jpg',
-    author: 'you',
+    author: 'Sherri',
     note: 'It was fun.  The food was pretty goood nice. Bob was there',
     bucketList: ''
   }
