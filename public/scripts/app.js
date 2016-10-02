@@ -179,6 +179,9 @@ function render(data){
 
 function getFormData(form){
   var serializedForm = $(form).serialize();
+  var bucketStatus = ($(form).find('.bucketCheck').is(':checked'))? 'checked': '';
+  console.log(bucketStatus);
+  serializedForm += '&bucketList=' + bucketStatus;
   console.log(serializedForm);
   return serializedForm;
 }

@@ -52,17 +52,12 @@
             <textarea  class="form-control" name="note" placeholder="How was your experience?"></textarea>
           </div>
         </div>
-        <div class="radio-buttons">
-        <label class="custom-control custom-radio">
-          <input id="radio1" name="bucketList" type="radio" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Visited?</span>
-        </label>
-        <label class="custom-control custom-radio">
-          <input id="radio2" name="bucketList" type="radio" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Bucket List</span>
-        </label>
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              <input class="bucketCheck" value="" type="checkbox" name="bucketList">Bucket List
+            </label>
+          </div>
         </div>
         <button type="submit" class="btn form-btn btn-default">Save your Experience!</button>
         <button type="button" class="btn form-btn btn-default cancel">Cancel</button>
@@ -107,17 +102,10 @@
               <textarea  class="form-control" name="note" >{{note}}</textarea>
             </div>
           </div>
-          <div class="radio-buttons">
-          <label class="custom-control custom-radio">
-            <input id="radio1" name="bucketList" type="radio" class="custom-control-input">
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Visited?</span>
-          </label>
-          <label class="custom-control custom-radio">
-            <input id="radio2" name="bucketList" type="radio" class="custom-control-input">
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Bucket List</span>
-          </label>
+         <div class="checkbox">
+            <label>
+              <input class="bucketCheck" value="" type="checkbox" name="bucketList" {{bucketList}}>Bucket List
+            </label>
           </div>
           <button type="submit" id="submit-edits" class="btn form-btn btn-default">Save your Experience!</button>
           <button type="button" class="btn form-btn btn-default cancel">Cancel</button>
