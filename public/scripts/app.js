@@ -30,14 +30,14 @@ $(document).ready(function(){
       $('#main').append(content);
       var imgIcon;
       for(var key in data){
-        for(var i=0 ; i<userGroup.length ; i++){
-          if(data[i].author === userGroup[i].name){
-            console.log(data[i].author,userGroup[i].name)
-            imgIcon = userGroup[i].marker;
-            console.log(imgIcon)
-            break;
-          }
-        }
+        // for(var i=0 ; i<userGroup.length ; i++){
+        //   if(data[i].author === userGroup[i].name){
+        //     console.log(data[i].author,userGroup[i].name)
+        //     imgIcon = userGroup[i].marker;
+        //     console.log(imgIcon)
+        //     break;
+        //   }
+        // }
         LatLng.lat = data[key].coordinates.lat;
         LatLng.lng = data[key].coordinates.lng;
         addMarker(LatLng, map,imgIcon)
