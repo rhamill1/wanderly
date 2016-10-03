@@ -3,6 +3,7 @@ var content;
 var allExperiences = [];
 var markers = [];
 var currentUser;
+var userGroup=[];
 
 $(document).ready(function(){
   console.log('js is ready!');
@@ -27,10 +28,19 @@ $(document).ready(function(){
       allExperiences = data;
       window.content = template({Experience : data});
       $('#main').append(content);
+      var imgIcon;
       for(var key in data){
+        for(var i=0 ; i<userGroup.length ; i++){
+          if(data[i].author === userGroup[i].name){
+            console.log(data[i].author,userGroup[i].name)
+            imgIcon = userGroup[i].marker;
+            console.log(imgIcon)
+            break;
+          }
+        }
         LatLng.lat = data[key].coordinates.lat;
         LatLng.lng = data[key].coordinates.lng;
-        addMarker(LatLng, map)
+        addMarker(LatLng, map,imgIcon)
       }
     }
   });
@@ -193,6 +203,7 @@ function getUsersGroup(){
       var template = Handlebars.compile(source);
       var userFormHtml = template({ User : data });
       $('#userList').append(userFormHtml);
+      userGroup = data;
     }
   })
 
@@ -238,13 +249,14 @@ function initialize(){
 
 
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+// label: labels[labelIndex++ % labels.length],
 var labelIndex = 0;
 
-function addMarker(location, map) {
+function addMarker(location, map,markerImg) {
   var marker = new google.maps.Marker({
     position: location,
-    label: labels[labelIndex++ % labels.length],
     animation: google.maps.Animation.DROP,
+    icon :markerImg,
     map: map
   });
   marker.setMap(map);
