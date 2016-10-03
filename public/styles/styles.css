@@ -3,29 +3,20 @@
 body {
   padding:0;
   margin:0;
-  font-family: Georgia;
-  font-size:18px;
+  font-family: Helvetica;
+  /*font-family: Georgia;*/
+  font-size:16px;
   background:white;
 }
 
-footer {
+/*footer {
   background: #555555;
   color: white;
-}
-
-/*    ids    */
-
-
-
+}*/
 
 #map {
    padding:0px;
    height:350px;
-/*   box-shadow: 0px 2px 34px -5px rgba(0,0,0,0.75);
-   -webkit-box-shadow: 0px 2px 34px -5px rgba(0,0,0,0.75);
-   -moz-box-shadow: 0px 2px 34px -5px rgba(0,0,0,0.75);*/
-   /*margin-bottom:50px;
-   margin-top:20px;*/
 }
 
 .container {
@@ -33,13 +24,15 @@ footer {
   margin: 0px;
   background: #053667;
 }
+
 #main {
   background: #e5dee1;
 }
 
 #new-entry {
   display: none;
-  padding-bottom:50px;
+  padding: 0px;
+  background: #5C5C5C;
 }
 
 .lat,.lng {
@@ -48,44 +41,38 @@ footer {
 
 #footer-links {
   list-style: none;
-  display:block;
+  display: block;
   text-align: center;
-  border-top: 2px solid #999999;
-  padding:10px;
+  padding: 40px;
   clear: both;
-  height: 100vh - 900px;
+  height: 100px;
   background: #5C5C5C;
   margin: 0px;
 }
 
 #footer-links li {
   display: inline;
-  padding:20px;
+  padding: 60px;
   margin: 0px;
 }
 
 #footer-links li a{
-  color:white ;
+  color: #cecece;
 }
 
-/*   classes */
 .app-title {
   font-family:'Lobster Two', cursive;
   font-weight: bold;
-  margin-left:50px;
+  margin-left: 3em;
   padding:10px;
   color:#800080;
   display: inline-block;
 }
 
 .imagetag{
-  width:100%;
+  width:500px;
   margin: 20px 10px 20px 10px;
 }
-.userName {
-  display: none;
-}
-
 
 .box {
     margin: 25px;
@@ -110,7 +97,7 @@ footer {
 
 
 .btn{
-   background: #52527a;
+  background: #52527a;
   color:#fff;
   font-size: 18px;
   border:none;
@@ -125,12 +112,9 @@ footer {
   margin:0 auto;
 }
 
-footer {
-  margin: 0px;
-}
-
-#text-box {
-  margin: 0 2em 0 2em;
+#footer {
+  padding: 0px;
+  background: #5C5C5C;
 }
 
 #userSelection {
@@ -142,5 +126,31 @@ footer {
 }
 
 #userName {
+  display: none;
+}
+
+select {
+  background: transparent;
+  border: 0;
+  margin-top: 3em;
+  margin-right: 7em;
+  color:#800080;
+  -webkit-appearance: none;
+}
+
+#experience-form, #update-experience-form {
+  padding-top: 30px;
+  background: #5C5C5C;
+  color: #cecece;
+  margin: 0px;
+  position: relative;
+  display: block;
+}
+
+#new-entry-btn {
+  margin-left: 1em;
+}
+
+.userName {
   display: none;
 }

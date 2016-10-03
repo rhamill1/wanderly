@@ -10,7 +10,8 @@ newExperiences.push(
     image: 'http://assets.fodors.com/destinations/54468/boat-harbor-hong-kong-china-1_main.jpg',
     author: 'Ryan',
     note: 'It was fun.  The food was nice.',
-    bucketList: ''
+    bucketList: '',
+    createdAt: new Date().toDateString()
   }
 );
 
@@ -22,7 +23,8 @@ newExperiences.push(
     image: 'http://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2015/12/GettyImages-140893867_full.jpg',
     author: 'Sherri',
     note: 'It was fun.  The food was pretty goood nice. Bob was there',
-    bucketList: ''
+    bucketList: '',
+    createdAt: new Date().toDateString()
   }
 );
 
@@ -34,7 +36,8 @@ newExperiences.push(
     image: 'http://globalepix.com/wp-content/uploads/2013/10/WIEI-iceland-walking1.jpg',
     author: 'Bob',
     note: 'I met another Bob there. He was not my favorite Bob',
-    bucketList: 'checked'
+    bucketList: 'checked',
+    createdAt: new Date().toDateString()
   }
 );
 

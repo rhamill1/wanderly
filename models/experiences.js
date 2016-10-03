@@ -8,7 +8,8 @@ var experienceSchema = new Schema({
   image: String,
   author: String,
   note: String,
-  bucketList: String
+  bucketList: String,
+  createdAt: String
 });
 
 var Experience = mongoose.model('Experience', experienceSchema);

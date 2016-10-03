@@ -17,11 +17,10 @@
     <div>
       <h1 class="app-title"> Wanderly </h1>
       <div id="userSelection">
-        <p class="user-form-label"> Current user </p>
         <form  id="userForm">
           <select name="userList" id="userList">
-           <option value="no user"> who are you? </option>
-           <script   id="user-template" type="text/x-handlebars-template">
+           <option value="no user">author &#9663;</option>
+           <script id="user-template" type="text/x-handlebars-template">
             {{#each User}}
               <option value="{{name}}">{{name}}</option>
             {{/each}}
@@ -69,9 +68,9 @@
             </label>
           </div>
         </div>
-        <div class="form-group">
+<!--         <div class="form-group">
           <input type="text" class="form-control userName" name="author"  placeholder="Enter author">
-        </div>
+        </div> -->
         <button type="submit" class="btn form-btn btn-default">Save your Experience!</button>
         <button type="button" class="btn form-btn btn-default cancel">Cancel</button>
           <div class="form-group">
@@ -139,11 +138,12 @@
               <div class="col-md-5">
                 <img src="{{image}}" class="imagetag" alt="personal images">
               </div>
-              <div class="col-md-offset-1 col-md-5 text-box">
+              <div class="col-md-offset-2 col-md-5 text-box">
                 <h2> {{title}}</h2>
                 <p class="datetag"><strong>Date: </strong> {{date}}</p>
                 <p class="authortag"><strong>By: </strong> {{author}}</p>
                 <p class="notetag"> {{note}}</p>
+                <p class="created-at">Created At: {{createdAt}}</p>
                 <button class="fa fa-pencil-square-o editBtn" aria-hidden="true"></button>
                 <button class="fa fa-times deleteBtn" ></button>
               </div>
@@ -174,7 +174,7 @@
     <footer class="container" id="footer">
       <ul id="footer-links">
         <li> <a href="#"> About </a></li>
-        <li> <a href="#"> Github </a></li>
+        <li> <a href="https://github.com/Sherri010/wanderly/"> Github </a></li>
       </ul>
     </footer>
 
