@@ -13,6 +13,17 @@ app.get('/', function homepage (req, res){
 });
 
 
+///user
+
+app.get('/api/users/',function (req,res){
+  db.User.find({},function(err,list){
+   console.log(list);
+   res.json(list);
+  });
+});
+
+
+///// experience
 app.get('/api/experiences', function index (req, res){
   db.Experience.find({}, function(err, list) {
     //console.log(list);
