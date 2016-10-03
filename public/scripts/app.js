@@ -204,6 +204,7 @@ function getUsersGroup(){
       var userFormHtml = template({ User : data });
       $('#userList').append(userFormHtml);
       userGroup = data;
+      currentUser = userGroup[0];
     }
   })
 
@@ -268,3 +269,4 @@ function setMapOnAll(map) {
     markers[i].setMap(map);
   }
 }
+

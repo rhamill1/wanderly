@@ -4,10 +4,18 @@ var newUsers = [];
 
 newUsers.push(
   {
+  name: 'guest',
+  image: '',
+  marker: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+  }
+);
+
+newUsers.push(
+  {
   name: 'Ryan',
   image: '',
   marker: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
-}
+  }
 );
 
 newUsers.push(
