@@ -70,9 +70,13 @@ body {
 }
 
 .imagetag{
-  width:500px;
+  width:100%;
   margin: 20px 10px 20px 10px;
 }
+.userName {
+  display: none;
+}
+
 
 .box {
     margin: 25px;

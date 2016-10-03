@@ -6,7 +6,7 @@ newUsers.push(
   {
   name: 'Ryan',
   image: '',
-  marker: ''
+  marker: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
 }
 );
 
@@ -14,7 +14,7 @@ newUsers.push(
   {
   name: 'Sherri',
   image: '',
-  marker: ''
+  marker: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
   }
 );
 
@@ -22,7 +22,7 @@ newUsers.push(
   {
   name: 'Bob',
   image: '',
-  marker: ''
+  marker: 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png'
   }
 );
 
