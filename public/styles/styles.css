@@ -70,13 +70,9 @@ body {
 }
 
 .imagetag{
-  width:100%;
+  width:500px;
   margin: 20px 10px 20px 10px;
 }
-.userName {
-  display: none;
-}
-
 
 .box {
     margin: 25px;
@@ -142,9 +138,19 @@ select {
   -webkit-appearance: none;
 }
 
-#experience-form {
+#experience-form, #update-experience-form {
   padding-top: 30px;
   background: #5C5C5C;
   color: #cecece;
   margin: 0px;
+  position: relative;
+  display: block;
+}
+
+#new-entry-btn {
+  margin-left: 1em;
+}
+
+.userName {
+  display: none;
 }
