@@ -19,10 +19,12 @@
       <div id="userSelection">
         <form  id="userForm">
           <select name="userList" id="userList">
-            <option value="no user"> who are you? </option>
-            <option value="Ryan">Ryan </option>
-            <option value="Sherri">Sherri</option>
-            <option value="Bob">Bob</option>
+           <option value="no user"> who are you? </option>
+           <script   id="user-template" type="text/x-handlebars-template">
+            {{#each User}}
+              <option value="{{name}}">{{name}}</option>
+            {{/each}}
+            </script>
           </select>
         </form>
       </div>

@@ -8,6 +8,7 @@ $(document).ready(function(){
   console.log('js is ready!');
   // $('#myModal').modal({show: false});
   initialize();
+  getUsersGroup()
   var source = $('#experience-handle-bar').html();
   template = Handlebars.compile(source);
   var LatLng={lat:0,lng:0};
@@ -178,6 +179,32 @@ $(document).ready(function(){
 
 
 });//ending ready
+
+
+function getUsersGroup(){
+
+  $.ajax({
+    method:"GET",
+    url:"/api/users/",
+    data:[],
+    success: function (data){
+      console.log(data);
+      var source = $('#user-template').html();
+      var template = Handlebars.compile(source);
+      var userFormHtml = template({ User : data });
+      $('#userList').append(userFormHtml);
+    }
+  })
+
+
+ //set up the template userForm
+
+ //show users
+
+
+}
+
+
 
 
 function render(data){
