@@ -94,11 +94,10 @@ $(document).ready(function(){
   $('#new-entry').on('click','.cancel', function(e){
     $('#new-entry').toggle(false);
     $('#experience-form')[0].reset();
-
-// var validator = $('#experience-form')[0].validate();
     experienceValidHandler.resetForm();
     listenerHandle.remove();
   });
+
 
   $('#editSpace').on('click','#submit-edits', function(e){
     e.preventDefault();

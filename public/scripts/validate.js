@@ -1,4 +1,6 @@
 var experienceValidHandler;
+var updateValidHandler;
+
 $(function() {
   experienceValidHandler = $('#experience-form').validate({
     rules: {
@@ -26,16 +28,7 @@ $(function() {
       },
 
       lat: "Please click a location on the map"
-    },
+    }
   });
-
-  // $("#experience-form").on('submit', function(e){
-  //   var isvalidate=$("#experience-form").valid();
-  //   if(!isvalidate)
-  //   {
-  //     e.preventDefault();
-  //     console.log('it was wrong')
-  //   }
-  // });
 
 });
